@@ -48,3 +48,17 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.actions {
+    display: flex;
+}
+
+.actions p {
+    color: #888;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    margin: 0;
+    text-align: center;
+}

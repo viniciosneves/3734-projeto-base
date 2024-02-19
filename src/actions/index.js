@@ -1,5 +1,6 @@
 'use server'
-import db from "../../../prisma/db"
+
+import db from "../../prisma/db"
 
 export async function sendThumbUp(post) {
   // inserir no banco
