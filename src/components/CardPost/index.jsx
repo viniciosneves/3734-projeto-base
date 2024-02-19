@@ -4,6 +4,7 @@ import styles from './cardpost.module.css'
 import Link from "next/link"
 import { sendThumbUp } from "@/actions"
 import { ThumbsUpButton } from "../ThumbsUpButton"
+import { CommentModal } from "../CommentModal"
 
 export const CardPost = ({ post, highlight }) => {
 
@@ -35,6 +36,10 @@ export const CardPost = ({ post, highlight }) => {
                         <ThumbsUpButton />
                         <p>{post.likes}</p>
                     </form>
+                    <div>
+                        <CommentModal />
+                        <p>{post.comments.length}</p>
+                    </div>
                 </div>
                 <Avatar
                     imageSrc={post.author.avatar}
