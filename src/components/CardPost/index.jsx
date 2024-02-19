@@ -6,6 +6,7 @@ import { sendThumbUp } from "@/actions"
 import { ThumbsUpButton } from "../ThumbsUpButton"
 
 export const CardPost = ({ post, highlight }) => {
+
     const thumbsUpSubmit = sendThumbUp.bind(null, post)
 
     return (
@@ -29,7 +30,7 @@ export const CardPost = ({ post, highlight }) => {
                 </div>}
             </section>
             <footer className={styles.footer}>
-            <div className={styles.actions}>
+                <div className={styles.actions}>
                     <form action={thumbsUpSubmit}>
                         <ThumbsUpButton />
                         <p>{post.likes}</p>
