@@ -9,18 +9,25 @@ import { SubmitButton } from "../SubmitButton";
 import { Comment } from "../Comment";
 import { replyComment } from "@/actions";
 
-export const ReplyModal = ({ comment }) => {
+export const ReplyModal = ({ comment, onClose }) => {
     const modalRef = useRef(null);
 
     const openModal = () => {
         modalRef.current.openModal();
     };
 
-    const onSubmit = replyComment.bind(null, comment)
+    const sendReply = (formData) => {
+        replyComment(comment, formData).then(() => {
+            modalRef.current.closeModal()
+            if(onClose) {
+                onClose()
+            }
+        })
+    }
 
     return (<>
         <Modal ref={modalRef}>
-            <form action={onSubmit} onSubmit={() => modalRef.current.closeModal()}>
+            <form action={sendReply}>
                 <div className={styles.body}>
                     <Comment comment={comment}/>
                 </div>

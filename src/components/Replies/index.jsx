@@ -8,6 +8,18 @@ import { ReplyModal } from '../ReplyModal'
 export const Replies = ({ comment }) => {
 
     const [showReplies, setShowReplies] = useState(false)
+    const [replies, setReplies] = useState([])
+    async function fetchData () {
+        const response = await fetch(`/api/replies/${comment.id}`)
+        const data = await response.json()
+        setReplies(data)
+    }
+
+    useEffect(() => {
+        if (showReplies) {
+            fetchData()
+        }
+    }, [showReplies])
 
     return (<div className={styles.container}>
 
@@ -16,9 +28,9 @@ export const Replies = ({ comment }) => {
                 {showReplies ? 'Ocultar' : 'Ver'} respostas
             </button>
             {showReplies && <ul>
-                {comment.children?.map(reply => <li key={reply.id}>
+                {replies?.map(reply => <li key={reply.id}>
                     <Comment comment={reply}/>
-                    <ReplyModal comment={reply} />
+                    <ReplyModal comment={reply} onClose={fetchData}/>
                 </li>)}    
             </ul>}
         </div>
