@@ -5,11 +5,11 @@ import { Spinner } from "../Spinner";
 import { ArrowFoward } from "../icons/ArrowFoward";
 import { Button } from "../Button";
 
-export const SubmitButton = () => {
+export const SubmitButton = ({children}) => {
     const { pending } = useFormStatus();
     return (
         <Button aria-disabled={pending} type="submit">
-            Comentar {pending ? <Spinner /> : <ArrowFoward />}
+             {pending ? <Spinner /> : <>{children} <ArrowFoward /></>}
         </Button>
     )
 }

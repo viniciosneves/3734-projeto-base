@@ -1,5 +1,6 @@
 import { Comment } from "../Comment"
 import { Replies } from "../Replies"
+import { ReplyModal } from "../ReplyModal"
 import styles from './commentlist.module.css'
 
 export const CommentList = ({ comments }) => {
@@ -9,6 +10,7 @@ export const CommentList = ({ comments }) => {
             <ul>
                 {comments.map(comment => <li key={comment.id}>
                     <Comment comment={comment} />
+                    <ReplyModal comment={comment}/>
                     <Replies />
                 </li>)}
             </ul>
