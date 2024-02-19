@@ -11,9 +11,14 @@
 }
 
 .comments ul li {
-    border-bottom: 1px solid black;
     padding: 16px 0;
 }
+
+
+.comments .comment {
+    border-bottom: 1px solid black;
+}
+
 
 .comments h2 {
     color: #171D1F;

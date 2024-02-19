@@ -8,10 +8,10 @@ export const CommentList = ({ comments }) => {
         <section className={styles.comments}>
             <h2>Comentários</h2>
             <ul>
-                {comments.map(comment => <li key={comment.id}>
+                {comments.map(comment => <li key={comment.id} className={styles.comment}>
                     <Comment comment={comment} />
                     <ReplyModal comment={comment}/>
-                    <Replies />
+                    <Replies comment={comment}/>
                 </li>)}
             </ul>
         </section>

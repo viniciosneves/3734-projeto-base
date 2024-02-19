@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './replies.module.css'
+import { Comment } from '../Comment'
+import { ReplyModal } from '../ReplyModal'
 
 export const Replies = ({ comment }) => {
 
@@ -13,6 +15,12 @@ export const Replies = ({ comment }) => {
             <button className={styles.btn} onClick={() => setShowReplies(!showReplies)}>
                 {showReplies ? 'Ocultar' : 'Ver'} respostas
             </button>
+            {showReplies && <ul>
+                {comment.children?.map(reply => <li key={reply.id}>
+                    <Comment comment={reply}/>
+                    <ReplyModal comment={reply} />
+                </li>)}    
+            </ul>}
         </div>
     </div>)
 }
