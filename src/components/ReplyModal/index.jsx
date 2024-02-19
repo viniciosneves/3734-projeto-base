@@ -16,10 +16,11 @@ export const ReplyModal = ({ comment }) => {
         modalRef.current.openModal();
     };
 
+    const onSubmit = replyComment.bind(null, comment)
 
     return (<>
         <Modal ref={modalRef}>
-            <form onSubmit={() => modalRef.current.closeModal()}>
+            <form action={onSubmit} onSubmit={() => modalRef.current.closeModal()}>
                 <div className={styles.body}>
                     <Comment comment={comment}/>
                 </div>
