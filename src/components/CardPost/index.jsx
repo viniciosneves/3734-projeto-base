@@ -2,13 +2,14 @@ import Image from "next/image"
 import { Avatar } from "../Avatar"
 import styles from './cardpost.module.css'
 import Link from "next/link"
-import { sendThumbUp } from "@/actions"
+import { sendComment, sendThumbUp } from "@/actions"
 import { ThumbsUpButton } from "../ThumbsUpButton"
 import { CommentModal } from "../CommentModal"
 
 export const CardPost = ({ post, highlight }) => {
 
     const thumbsUpSubmit = sendThumbUp.bind(null, post)
+    const commentSubmit = sendComment.bind(null, post)
 
     return (
         <article className={styles.card} style={{ width: highlight ? 993 : 486 }}>
@@ -37,7 +38,7 @@ export const CardPost = ({ post, highlight }) => {
                         <p>{post.likes}</p>
                     </form>
                     <div>
-                        <CommentModal />
+                        <CommentModal onSubmit={commentSubmit}/>
                         <p>{post.comments.length}</p>
                     </div>
                 </div>
